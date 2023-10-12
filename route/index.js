@@ -56,7 +56,7 @@ module.exports = function(app) {
         renderMW(objRepo, 'newroller')
     );
 
-    app.get('/roller/:rollerstationid/del/:rollerid',,
+    app.get('/roller/:rollerstationid/del/:rollerid',
         getRollerStationMW(objRepo),
         getRollerMW(objRepo),
         delRollerMW(objRepo),
