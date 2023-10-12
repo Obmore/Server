@@ -1,3 +1,4 @@
+// Middlewares:
 const renderMW = require('../middleware/renderMW');
 
 
@@ -18,29 +19,24 @@ module.exports = function(app) {
     };
 
     // Routes:
-    // Station:
 
     app.use('/rollerstation/new',
-        authMW(objRepo),
         saveRollerStationMW(objRepo),
         renderMW(objRepo, 'newrollerstation')
     );
 
     app.use('/rollerstation/edit/:rollerstationid',
-        authMW(objRepo),
         getRollerStationMW(objRepo),
         saveRollerStationMW(objRepo),
         renderMW(objRepo, 'newrollerstation')
     );
 
     app.get('/rollerstation/del/:rollerstationid',
-        authMW(objRepo),
         getRollerStationMW(objRepo),
         delRollerStationMW(objRepo)
     );
 
     app.get('/rollerstation',
-        authMW(objRepo),
         getRollerStationsMW(objRepo),
         renderMW(objRepo, 'rollerstation')
     );
@@ -48,22 +44,19 @@ module.exports = function(app) {
 
     // Roller:
     app.use('/roller/:rollerstationid/new',
-        authMW(objRepo),
         getRollerStationMW(objRepo),
         saveRollerMW(objRepo),
         renderMW(objRepo, 'newroller')
     );
 
     app.use('/roller/:rollerstationid/edit/:rollerid',
-        authMW(objRepo),
         getRollerStationMW(objRepo),
         getRollerMW(objRepo),
         saveRollerMW(objRepo),
         renderMW(objRepo, 'newroller')
     );
 
-    app.get('/roller/:rollerstationid/del/:rollerid',
-        authMW(objRepo),
+    app.get('/roller/:rollerstationid/del/:rollerid',,
         getRollerStationMW(objRepo),
         getRollerMW(objRepo),
         delRollerMW(objRepo),
@@ -71,19 +64,9 @@ module.exports = function(app) {
     );
 
     app.get('/roller/:rollerstationid',
-        authMW(objRepo),
         getRollerStationMW(objRepo),
         getRollersMW(objRepo),
         renderMW(objRepo, 'rollerofstation')
     );
 
-    // General:
-    app.use('/logout', 
-        logoutMW(objRepo)
-    );
-
-    app.use('/',
-        checkPassMW(objRepo), 
-        renderMW(objRepo, 'login')
-    );
 };
