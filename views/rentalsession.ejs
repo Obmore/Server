@@ -1,0 +1,40 @@
+<%- include('header') -%>
+<%- include('menu') -%>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-center">Rental Sessions of <%= user.given_name %> <%= user.family_name %></h2>
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% rentalSessions.forEach(function(session){ %>
+                    <tr>
+                        <td><%= session.status %></td>
+                        <td><%= session.start.toLocaleDateString() %> <%= session.start.toLocaleTimeString() %></td>
+                        <td>
+                            <% if (session.end) { %>
+                                <%= session.end.toLocaleDateString() %> <%= session.end.toLocaleTimeString() %>
+                            <% } else { %>
+                                Ongoing
+                            <% } %>
+                        </td>
+                        <td style="width:30px;white-space: nowrap">
+                            <a href="/rentalsession/edit" class="btn btn-sm btn-primary"><i class="far fa-edit"></i></a>
+                            <a href="/rentalsession/del" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                <% }); %>
+                </tbody>
+            </table>
+            <a href="/rentalsession/new" class="btn btn-block btn-primary">Add new rental session</a>
+        </div>
+    </div>
+</div>
+<%- include('footer') -%>

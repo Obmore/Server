@@ -2,8 +2,9 @@
 
 const requireOption = require('./requireOption');
 
-module.exports = function(objectrepository, viewName) {
+module.exports = function(objectrepository, responseData) {
     return function(req, res) {
-        res.render(viewName);
+        // res.render(viewName);
+        res.json(responseData);
     };
 };

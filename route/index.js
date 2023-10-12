@@ -1,29 +1,20 @@
-// We have to collect the middlewares
-
-const authMW = require('../middleware/auth/authMW');
-const checkPassMW = require('../middleware/auth/checkPassMW');
-const logoutMW = require('../middleware/auth/logoutMW');
 const renderMW = require('../middleware/renderMW');
 
-const getRollerStationsMW = require('../middleware/rollerstation/getRollerStationsMW');
-const getRollerStationMW = require('../middleware/rollerstation/getRollerStationMW');
-const delRollerStationMW = require('../middleware/rollerstation/delRollerStationMW');
-const saveRollerStationMW = require('../middleware/rollerstation/saveRollerStationMW');
 
-const getRollersMW = require('../middleware/roller/getRollersMW');
-const getRollerMW = require('../middleware/roller/getRollerMW');
-const delRollerMW = require('../middleware/roller/delRollerMW');
-const saveRollerMW = require('../middleware/roller/saveRollerMW');
 
 // For the DB
-const RollerStationModel = require('../models/rollerstation');
-const RollerModel = require('../models/roller');
+const RentalSession = require('../models/rental_session');
+const Scooter = require('../models/scooter');
+const Station = require('../models/station');
+const User = require('../models/user');
 
 // Definition of the objectRepooooo
 module.exports = function(app) {
     const objRepo = {
-        RollerStationModel: RollerStationModel,
-        RollerModel: RollerModel
+        RentalSession: RentalSession,
+        Scooter: Scooter,
+        Station: Station,
+        User: User
     };
 
     // Routes:
