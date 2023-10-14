@@ -1,11 +1,22 @@
 const db = require('../config/db');
 
 const StationSchema = db.Schema({
-    serial_number: String,
-    name: { type: String, default: null },
-    address: { type: String, default: null },
-    id: { type: db.Schema.Types.ObjectId, auto: true }
+    serial_number: {
+        type: String,
+        maxlength: 16,
+        required: true
+    },
+    name: { 
+        type: String, 
+        maxlength: 100,
+        default: null 
+    },
+    address: { 
+        type: String,
+        maxlength: 100,
+        default: null
+    }
 });
 
 const Station = db.model('Station', StationSchema);
-module.exports = Station;
+module.exports = Station;   

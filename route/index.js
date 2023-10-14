@@ -19,7 +19,7 @@ module.exports = function(app) {
     };
 
     // Routes:
-
+/*
     app.use('/rollerstation/new',
         saveRollerStationMW(objRepo),
         renderMW(objRepo, 'newrollerstation')
@@ -68,5 +68,5 @@ module.exports = function(app) {
         getRollersMW(objRepo),
         renderMW(objRepo, 'rollerofstation')
     );
-
+*/
 };
